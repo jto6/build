@@ -45,7 +45,7 @@ else
 TF_A_LOGLVL 		?= 20
 TF_A_BUILD		?= release
 endif
-FVP_PATH		?= $(ROOT)/Base_RevC_AEMvA_pkg/models/Linux64_GCC-9.3
+FVP_PATH		?= /home/jon/dev/Base_RevC_AEMvA_pkg/models/Linux64_GCC-9.3
 FVP_BIN			?= FVP_Base_RevC-2xAEMvA
 FVP_LINUX_DTB		?= $(LINUX_PATH)/arch/arm64/boot/dts/arm/fvp-base-revc.dtb
 OUT_PATH		?= $(ROOT)/out
