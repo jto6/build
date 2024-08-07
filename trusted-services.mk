@@ -60,6 +60,7 @@ ffa-$1-sp:
 	CROSS_COMPILE=$(subst $(CCACHE),,$(CROSS_COMPILE_S_USER)) cmake -G"Unix Makefiles" \
 		-S $(TS_PATH)/deployments/$1/$2 -B $(TS_BUILD_PATH)/$1 \
 		-DCMAKE_INSTALL_PREFIX=$(TS_INSTALL_PREFIX) \
+	  -DCFG_TA_MCOUNT=y \
 		-DCMAKE_C_COMPILER_LAUNCHER=$(CCACHE) $(SP_COMMON_FLAGS) $4
 	$$(MAKE) -C $(TS_BUILD_PATH)/$1 install
 	dtc -I dts -O dtb -o $(TS_INSTALL_PREFIX)/$(SP_DIR)/manifest/$3.dtb \
