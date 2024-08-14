@@ -33,10 +33,10 @@ BR2_PACKAGE_LINUX_FTPM_MOD_EXT_PATH ?= $(LINUX_PATH)
 ################################################################################
 MEASURED_BOOT		?= n
 TF_A_PATH		?= $(ROOT)/trusted-firmware-a
-ifeq ($(MEASURED_BOOT),y)
+#ifeq ($(MEASURED_BOOT),y)
 # Prefer release mode for TF-A if using Measured Boot, debug may exhaust memory.
-TF_A_BUILD		?= release
-endif
+#TF_A_BUILD		?= release
+#endif
 TF_A_DEBUG		?= $(DEBUG)
 ifeq ($(TF_A_DEBUG),1)
 TF_A_LOGLVL		?= 40
