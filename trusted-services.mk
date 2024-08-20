@@ -174,7 +174,7 @@ ffa-test-all-realclean: ffa-$1-realclean
 endef
 
 ################################################################################
-# Trusted Services hot applications
+# Trusted Services host applications
 ################################################################################
 .PHONY: ts-host-all ts-host-all-clean ts-host-all-realclean
 all: ts-host-all
