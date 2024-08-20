@@ -61,6 +61,7 @@ MEMTAG ?= n
 ################################################################################
 # Paths to git projects and various binaries
 ################################################################################
+OUT_PATH		?= $(ROOT)/out
 TF_A_PATH		?= $(ROOT)/trusted-firmware-a
 BINARIES_PATH		?= $(ROOT)/out/bin
 QEMU_PATH		?= $(ROOT)/qemu
@@ -180,8 +181,7 @@ TF_A_FLAGS_SPMC_AT_EL_1 += CTX_INCLUDE_EL2_REGS=0 SPMD_SPM_AT_SEL2=0
 TF_A_FLAGS_SPMC_AT_EL_1 += ENABLE_SME_FOR_NS=0 ENABLE_SME_FOR_SWD=0
 TF_A_FLAGS_SPMC_AT_EL_1 += QEMU_TOS_FW_CONFIG_DTS=../build/qemu_v8/spmc_el1_manifest.dts
 TF_A_FLAGS_SPMC_AT_EL_1 += SPMC_OPTEE=1
-TF_A_FLAGS_SPMC_AT_EL_1 += QEMU_TOS_FW_CONFIG_DTS=../build/qemu_v8/spmc_el1_manifest.dts
-TF_A_FLAGS_SPMC_AT_EL_2  = SPD=spmd 
+TF_A_FLAGS_SPMC_AT_EL_2  = SPD=spmd
 TF_A_FLAGS_SPMC_AT_EL_2 += ENABLE_SPE_FOR_LOWER_ELS=0
 TF_A_FLAGS_SPMC_AT_EL_2 += ENABLE_SME_FOR_NS=0 ENABLE_SME_FOR_SWD=0
 TF_A_FLAGS_SPMC_AT_EL_2 += ENABLE_FEAT_SEL2=1
