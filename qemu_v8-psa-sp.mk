@@ -152,3 +152,15 @@ clean: ffa-fwu-fash-img-clean
 clean: ts-host-all-clean ffa-test-all-clean ffa-sp-all-clean linux-arm-ffa-user-clean
 
 endif
+
+###############################################################################
+# Root FS
+###############################################################################
+.PHONY: add_scripts
+# Make sure this is built before the buildroot target which will create the
+# root file system based on what's in $(BUILDROOT_TARGET_ROOT)
+buildroot: add_scripts
+
+add_scripts:
+	@mkdir -p --mode=755 $(BUILDROOT_TARGET_ROOT)/scripts
+	@install -v -p --mode=777 $(ROOT)/build/scripts/*.sh $(BUILDROOT_TARGET_ROOT)/scripts
