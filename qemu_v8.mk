@@ -224,6 +224,7 @@ arm-tf: $(BL32_DEPS) $(BL33_DEPS)
 	ln -sf $(TF_A_OUT)/bl1.bin $(BINARIES_PATH)
 	ln -sf $(TF_A_OUT)/bl2.bin $(BINARIES_PATH)
 	ln -sf $(TF_A_OUT)/bl31.bin $(BINARIES_PATH)
+	ln -sf $(TF_A_OUT)/qemu_fw.rom $(BINARIES_PATH)
 ifeq ($(TF_A_TRUSTED_BOARD_BOOT),y)
 	ln -sf $(TF_A_OUT)/trusted_key.crt $(BINARIES_PATH)
 	ln -sf $(TF_A_OUT)/tos_fw_key.crt $(BINARIES_PATH)
@@ -531,7 +532,7 @@ QEMU_BASE_ARGS += -smp $(QEMU_SMP)
 QEMU_BASE_ARGS += -cpu $(QEMU_CPU)
 QEMU_BASE_ARGS += -d unimp -semihosting-config enable=on,target=native
 QEMU_BASE_ARGS += -m $(QEMU_MEM)
-QEMU_BASE_ARGS += -bios bl1.bin
+QEMU_BASE_ARGS += -bios qemu_fw.rom
 QEMU_BASE_ARGS += -initrd rootfs.cpio.gz
 QEMU_BASE_ARGS += -kernel Image
 QEMU_BASE_ARGS += -append 'console=ttyAMA0,38400 keep_bootcon root=/dev/vda2 $(QEMU_KERNEL_BOOTARGS)'
