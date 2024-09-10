@@ -31,6 +31,14 @@ SP_FWU_CONFIG			?= $(DEFAULT_SP_CONFIG)
 SP_LOGGING_CONFIG		?= $(DEFAULT_SP_CONFIG)
 
 include qemu_v8.mk
+
+# Override TF_A_FLAGS_SPMC_AT_EL_1 set in qemu_v8.mk
+TF_A_FLAGS_SPMC_AT_EL_1  = $(TF_A_FLAGS_BL32_OPTEE) SPD=spmd
+TF_A_FLAGS_SPMC_AT_EL_1 += CTX_INCLUDE_EL2_REGS=0 SPMD_SPM_AT_SEL2=0
+TF_A_FLAGS_SPMC_AT_EL_1 += ENABLE_SME_FOR_NS=0 ENABLE_SME_FOR_SWD=0
+TF_A_FLAGS_SPMC_AT_EL_1 += QEMU_TOS_FW_CONFIG_DTS=../build/qemu_v8/spmc_el1_partitions_manifest.dts
+TF_A_FLAGS_SPMC_AT_EL_1 += SPMC_OPTEE=1
+
 include trusted-services.mk
 
 # The macros used in bl2_sp_list.dts and spmc_manifest.dts has to be passed to
@@ -54,12 +62,6 @@ OPTEE_OS_COMMON_EXTRA_FLAGS += \
 	CFG_CORE_HEAP_SIZE=131072 \
 	CFG_DT=y \
 	CFG_MAP_EXT_DT_SECURE=y
-
-TF_A_FLAGS_SPMC_AT_EL_1  = $(TF_A_FLAGS_BL32_OPTEE) SPD=spmd
-TF_A_FLAGS_SPMC_AT_EL_1 += CTX_INCLUDE_EL2_REGS=0 SPMD_SPM_AT_SEL2=0
-TF_A_FLAGS_SPMC_AT_EL_1 += ENABLE_SME_FOR_NS=0 ENABLE_SME_FOR_SWD=0
-TF_A_FLAGS_SPMC_AT_EL_1 += QEMU_TOS_FW_CONFIG_DTS=../build/qemu_v8/spmc_el1_partitions_manifest.dts
-TF_A_FLAGS_SPMC_AT_EL_1 += SPMC_OPTEE=1
 
 # The boot order of the SPs is determined by the order of calls here. This is
 # due to the SPMC not (yet) supporting the boot order field of the SP manifest.
