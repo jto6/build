@@ -99,7 +99,7 @@ endif
 # Linux FF-A user space driver
 ################################################################################
 # This driver is only used by the uefi-test app or the spmc tests
-ifneq ($(filter y, $(TS_UEFI_TESTS) $(SPMC_TESTS)),)
+#ifneq ($(filter y, $(TS_UEFI_TESTS) $(SPMC_TESTS)),)
 .PHONY: linux-arm-ffa-user linux-arm-ffa-user-clean
 all: linux-arm-ffa-user
 
@@ -122,7 +122,7 @@ linux-arm-ffa-user-clean:
 # needed by the uefi-test app to communicate with the smm-gateway SP using a
 # static carveout. If changed, run "make linux-defconfig-clean" to take effect.
 LINUX_DEFCONFIG_COMMON_FILES += $(CURDIR)/kconfigs/fvp_trusted-services_uefi.conf
-endif
+#endif
 
 ################################################################################
 # Trusted Services test applications
