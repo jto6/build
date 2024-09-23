@@ -103,7 +103,7 @@ endif
 .PHONY: linux-arm-ffa-user linux-arm-ffa-user-clean
 all: linux-arm-ffa-user
 
-linux-arm-ffa-user: linux
+linux-arm-ffa-user: linux-modules
 	mkdir -p $(OUT_PATH)/linux-arm-ffa-user
 	$(MAKE) -C $(ROOT)/linux-arm-ffa-user $(LINUX_COMMON_FLAGS) install \
 		TARGET_DIR=$(OUT_PATH)/linux-arm-ffa-user
