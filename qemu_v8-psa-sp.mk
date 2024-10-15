@@ -1,3 +1,4 @@
+MEASURED_BOOT			?= y
 TS_SMM_GATEWAY			?= y
 TS_LOGGING_SP			?= y
 TS_LOGGING_SP_LOG		?= "trusted-services-logs.txt"
